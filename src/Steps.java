@@ -10,6 +10,7 @@ public class Steps {
         Integer n = Integer.parseInt(in.readLine());
         Integer result = getAllSteps(n);
         System.out.println(result);
+        System.out.println("teko e nai");
     }
 
     private static Integer getAllSteps(int n){
