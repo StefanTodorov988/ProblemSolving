@@ -11,7 +11,6 @@ public class Steps {
         Integer result = getAllSteps(n);
         System.out.println(result);
     }
-
     private static Integer getAllSteps(int n){
         List<Integer> combinations = new ArrayList<Integer>();//Using only 0 index of the list so it can be given by reference
         combinations.add(0);
