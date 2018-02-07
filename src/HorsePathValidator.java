@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HorsePathValidator {//Not completed
+public class HorsePathValidator {//Uncompleted
     public static void main(String[] args) throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         Integer n = Integer.parseInt(in.readLine());
