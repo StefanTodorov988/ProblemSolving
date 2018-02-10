@@ -18,6 +18,6 @@ public class AppearanceCount {
             }
         }
         String searchedNum = in.readLine();
-        System.out.println(map.containsKey(searchedNum)? map.get(searchedNum): 0);
+        //ystem.out.println(map.containsKey(searchedNum)? map.get(searchedNum): 0);
     }
 }
