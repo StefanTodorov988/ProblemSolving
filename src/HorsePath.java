@@ -63,7 +63,7 @@ public class HorsePath {
                 }
             }
         }
-        printMatrix(matrix, n);
+        printMatrix(matrix);
     }
 
     public static boolean isLegit(int[][] matrix, int i, int j) {
@@ -82,9 +82,9 @@ public class HorsePath {
         return true;
     }
 
-    public static void printMatrix(int[][] matrix, int n) {
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+    public static void printMatrix(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
                 System.out.print(matrix[i][j] + " ");
             }
             System.out.println();
