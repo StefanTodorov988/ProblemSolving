@@ -1,62 +1,50 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class Test {
     public static void main(String[] args) throws IOException {
        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        List<String> list = Arrays.asList(in.readLine().split(" "));
 
-        List<Person> arr = list.stream().map(x -> new Person(x)).filter(Person.distinctByKey(Person::getName)).collect(Collectors.toList());
+       int n = Integer.parseInt(in.readLine());
 
-        arr.stream().map(x -> x.name = "Teko").collect(Collectors.toList());
-        arr.forEach(x-> x.name = "Teko");
-        arr.forEach(x -> System.out.println(x.name));
+       for (int i = 0 ; i < n;i++){
+           String useless = in.readLine();
+           String temp  = in.readLine();
+           int count = 1;
+           List<String> list = (LinkedList<String>) palindromes(temp);
+           Collections.sort(list, new Comparator<String>() {
+               @Override
+               public int compare(String o1, String o2) {
+                   return o2.length() - o1.length();
+               }
+           });
+           for (String str: list) {
+               System.out.println(str   );
+           }
+           System.out.println(count);
+       }
     }
+    public static List<String> palindromes(final String input) {
 
-    public static void doSomething(List<String> asd) {
-        asd.set(0, "Pefko");
-        asd.set(1, "Stefko");
+        final List<String> result = new LinkedList<>();
 
-    }
-
-    public static void doSomethingSecond(Person person) {
-        person = new Person("Stefko");
-    }
-}
-
-class Person implements Comparator<Person> {
-    public String name;
-    private static int counter = 0;
-    private int selfCounter;
-
-    public Person(String name) {
-        this.name = name;
-        counter++;
-        selfCounter = counter;
-    }
-
-    public int getCounter() {
-        return selfCounter;
-    }
-    public String getName() {
-        return name;
-    }
-    @Override
-    public int compare(Person o1, Person o2) {
-        if (o1.name == o2.name) {
-            return 0;
+        for (int i = 0; i < input.length(); i++) {
+            // expanding even length palindromes:
+            expandPalindromes(result,input,i,i+1);
+            // expanding odd length palindromes:
+            expandPalindromes(result,input,i,i);
         }
-        return 1;
+        return result;
     }
-    public static <Person> Predicate<Person> distinctByKey(Function<? super Person, ?> keyExtractor) {
-        Set<Object> seen = ConcurrentHashMap.newKeySet();
-        return t -> seen.add(keyExtractor.apply(t));
+    public static  void expandPalindromes(final List<String> result, final String s, int i, int j) {
+        while (i >= 0 && j < s.length() && s.charAt(i) == s.charAt(j)) {
+            result.add(s.substring(i,j+1).trim());
+            i--; j++;
+        }
     }
+
 }
+
+
